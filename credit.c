@@ -24,10 +24,10 @@ int main(void)
     }
 
     //Check cc_length = 13, 15, 16
-    //if (cc_length != 13 && cc_length != 15 && cc_length != 16)
-    //{
-    //    printf("INVALID\n");
-    //}
+    if (cc_length != 13 && cc_length != 15 && cc_length != 16)
+    {
+        printf("INVALID\n");
+    }
 
     //Check Luhn's Algorithm.
     //Digit odd: Sum of every other digit, starting with last digit.
