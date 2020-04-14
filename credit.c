@@ -24,10 +24,10 @@ int main(void)
     }
 
     //Check cc_length = 13, 15, 16
-    if (cc_length != 13 && cc_length != 15 && cc_length != 16)
-    {
-        printf("INVALID\n");
-    }
+    //if (cc_length != 13 && cc_length != 15 && cc_length != 16)
+    //{
+    //    printf("INVALID\n");
+    //}
 
     //Check Luhn's Algorithm.
     //Digit odd: Sum of every other digit, starting with last digit.
@@ -64,51 +64,52 @@ int main(void)
     {
         printf("INVALID\n");
     }
-
-    //Check AMEX, digits 15, starts with 34 37.
-    if (cc_length == 15)
+    else
     {
-        long long AMEX = cc_number / 10000000000000;
-        if (AMEX == 34 || AMEX == 37)
+        //Check AMEX, digits 15, starts with 34 37.
+        if (cc_length == 15)
         {
-            printf("AMEX\n");
+            long long AMEX = cc_number / 10000000000000;
+            if (AMEX == 34 || AMEX == 37)
+            {
+                printf("AMEX\n");
+            }
+            else
+            {
+                printf("INVALID\n");
+            }
         }
-        else
+        //Check MASTERCARD, digits 16, starts with 51 52 53 54 55.
+        //Check VISA, digits 16, starts with 4.
+        if (cc_length == 16)
         {
-            printf("INVALID\n");
+            long long MASTERVISA = cc_number / 100000000000000;
+            if (MASTERVISA > 50 && MASTERVISA < 56)
+            {
+                printf("MASTERCARD\n");
+            }
+            else if (MASTERVISA > 39 && MASTERVISA < 50)
+            {
+                printf("VISA\n");
+            }
+            else
+            {
+                printf("INVALID\n");
+            }
         }
-    }
 
-    //Check MASTERCARD, digits 16, starts with 51 52 53 54 55.
-    //Check VISA, digits 16, starts with 4.
-    if (cc_length == 16)
-    {
-        long long MASTERVISA = cc_number / 100000000000000;
-        if (MASTERVISA > 50 && MASTERVISA < 56)
+        //Check VISA, digits 13, starts with 4.
+        if (cc_length == 13)
         {
-            printf("MASTERCARD\n");
-        }
-        else if (MASTERVISA > 39 && MASTERVISA < 50)
-        {
-            printf("VISA\n");
-        }
-        else
-        {
-            printf("INVALID\n");
-        }
-    }
-
-    //Check VISA, digits 13, starts with 4.
-    if (cc_length == 13)
-    {
-        long long VISA = cc_number / 1000000000000;
-        if (VISA == 4)
-        {
-            printf("VISA\n");
-        }
-        else
-        {
-            printf("INVALID\n");
-        }
+            long long VISA = cc_number / 1000000000000;
+            if (VISA == 4)
+            {
+                printf("VISA\n");
+            }
+            else
+            {
+                printf("INVALID\n");
+            }
+        }    
     }
 }
