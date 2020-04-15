@@ -25,15 +25,11 @@ int main(void)
         {
             sentences++;
         }
-        
     }
     
     //Coleman-Liau index
-    //L = Average number of letters per 100 words in the text.
-    float L = letters * 100 / words;
-    //S = Average number of sentences per 100 words in the text.
-    float S = sentences * 100 / words;
-    //Coleman-Liau index
+    float L = letters * 100 / words; //L = Average number of letters per 100 words in the text.
+    float S = sentences * 100 / words; //S = Average number of sentences per 100 words in the text.
     float index = 0.0588 * L - 0.296 * S - 15.8;
     
     //Round the grades
