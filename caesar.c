@@ -23,9 +23,9 @@ int main(int argc, string argv[])
         return 1;
     }
 
-    string s = get_string("Plaintext: "); //Get plaintext
+    string s = get_string("plaintext: "); //Get plaintext
     
-    printf("Ciphertext: ");
+    printf("ciphertext: ");
     
     //Encipher the plaintext
     //Print ciphertext, Formula = c(i) = (p(i) + k) % 26
