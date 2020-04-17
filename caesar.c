@@ -6,7 +6,6 @@
 
 //Get the key
 //Ensure single command-line argument
-//Make sure argument contains only digit characters
 int main(int argc, string argv[])
 {
     if (argc != 2)
@@ -15,7 +14,8 @@ int main(int argc, string argv[])
         return 1;
     }
     
-    int a = strlen(argv[1]);
+    //Make sure argument contains only digit characters
+    int a = strlen(argv[1]); 
     
     for (int b = 0; b < a; b++)
     {
