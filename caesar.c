@@ -15,6 +15,17 @@ int main(int argc, string argv[])
         return 1;
     }
     
+    int a = strlen(argv[1]);
+    
+    for (int b = 0; b < a; b++)
+    {
+        if (isalpha(argv[1][b]))
+        {
+            printf("Usage: ./caesar key\n");
+            return 1;
+        }    
+    }
+    
     int k = atoi(argv[1]); //Convert a string into an integer
     
     if (k < 0)
@@ -44,6 +55,6 @@ int main(int argc, string argv[])
             printf("%c", s[i]); //If not alphabetic, leave the character as-is
         }
     }
-printf("\n");
-return 0;
-}
+    printf("\n");
+    return 0;
+}   
