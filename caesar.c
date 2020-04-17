@@ -28,6 +28,7 @@ int main(int argc, string argv[])
     
     int k = atoi(argv[1]); //Convert a string into an integer
     
+    //Make sure argument is a positive number
     if (k < 0)
     {
         printf("Usage: ./caesar key\n");
