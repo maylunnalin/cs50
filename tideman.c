@@ -207,4 +207,3 @@ void print_winner(void)
     }
     return;
 }
-
