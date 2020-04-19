@@ -150,18 +150,30 @@ void add_pairs(void)
 // Sort pairs in decreasing order by strength of victory
 void sort_pairs(void)
 {
-    // TODO
+    pair temp;
+    for (int i = 0; i < pair_count; i++)
+    {
+        for (int j = 0; j < pair_count; j++)
+        {
+            if (pairs[j].loser < pairs[j + 1].loser)
+            {
+                temp = pairs[j];
+                pairs[j] = pairs[j + 1];
+                pairs[j + 1] = temp;
+            }
+        }
+    }
     return;
 }
 
 // Lock pairs into the candidate graph in order, without creating cycles
 void lock_pairs(void)
 {
-    //for (int i = 0; i < pair_count; i++)
-    //{
-    //    locked[pairs[i].winner][pairs[i].loser] = true;
+    for (int i = 0; i < pair_count; i++)
+    {
+        locked[pairs[i].winner][pairs[i].loser] = true;
         
-    //}
+    }
     return;
 }
 
