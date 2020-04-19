@@ -1,7 +1,6 @@
 #include <cs50.h>
 #include <stdio.h>
 #include <string.h>
-#include <stdlib.h>
 
 // Max number of candidates
 #define MAX 9
@@ -118,12 +117,16 @@ void record_preferences(int ranks[])
     for (int i = 0; i < candidate_count; i++)
     {
         for (int j = i + 1; j < candidate_count; j++)
-        preferences[ranks[i]][ranks[j]]++;
+        {
+            preferences[ranks[i]][ranks[j]]++;
+        }
     }
     return;
 }
 
 // Record pairs of candidates where one is preferred over the other
+//Add each pair of candidates to 'pairs' array, if one candidate is preferred over the other
+//Update global variable 'pair_count' to be the total number of pairs
 void add_pairs(void)
 {
     for (int i = 0; i < candidate_count; i++)
@@ -172,10 +175,10 @@ void lock_pairs(void)
     int lock_winner = 0, lock_loser = 0;
     for (int i = 0; i < pair_count; i++)
     {
-        locked[pairs[i].winner][pairs[i].loser] = true;
+        locked[pairs[i].winner][pairs[i].loser] = true; //Update 'locked' to create the locked graph by adding all edges in decreasing order of victory strength
         lock_winner += pairs[i].winner;
         lock_loser += pairs[i].loser;
-        if (lock_winner == lock_loser)
+        if (lock_winner == lock_loser) //If there is a cycle, skip it
         {
             locked[pairs[i].winner][pairs[i].loser] = false;
         }
@@ -184,9 +187,24 @@ void lock_pairs(void)
 }
 
 // Print the winner of the election
+//Print the name that is the source of the graph, assuming there will not be more than one source
 void print_winner(void)
 {
-    // TODO
+    for (int i = 0; i < candidate_count; i++)
+    {
+        int sum = 0;
+        for (int j = 0; j < candidate_count; j++)
+        {
+            if (locked[j][i] == false)
+            {
+                sum++;
+            }
+            if (sum == candidate_count)
+            {
+                printf("%s\n", candidates[i]);
+            }
+        }
+    }
     return;
 }
 
